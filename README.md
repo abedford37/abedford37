@@ -1,58 +1,49 @@
-````markdown
 <div align="center">
 
-<img src="./assets/github-map-hero.png" alt="Ashley Bedford — Operational AI Field Guide" width="100%" />
+<img src="./assets/github-field-guide-hero.gif" alt="Ashley Bedford — Operational AI Field Guide" width="100%" />
 
 </div>
 
-# Ashley Bedford
+<p align="center">
+  <strong>Operational AI, from process map to production.</strong><br/>
+  I build AI decision systems that turn messy internal operations into trusted workflows teams actually use.
+</p>
 
-## Operational AI, from process map to production.
+<p align="center">
+  <kbd>Map</kbd> → <kbd>Build</kbd> → <kbd>Embed</kbd>
+</p>
 
-I build AI decision systems that turn messy internal operations into trusted workflows teams actually use.
-
-My work sits at the seam of process discovery, data architecture, applied AI/ML, optimization logic, and adoption — helping teams move from ambiguity to clarity and from manual work to systems that scale.
-
-```text
-Map → Build → Embed
-````
-
----
-
-## Start Here: Choose Your Route
-
-This GitHub is designed as a field guide. Choose the lens that matches how you want to review my work.
-
-<table>
-  <tr>
-    <td width="50%">
-      <a href="#route-01--technical-reviewer">
-        <img src="./assets/route-technical-reviewer.png" alt="Technical Reviewer Route" width="100%" />
-      </a>
-    </td>
-    <td width="50%">
-      <a href="#route-02--hiring-manager">
-        <img src="./assets/route-hiring-manager.png" alt="Hiring Manager Route" width="100%" />
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td width="50%">
-      <a href="#route-03--ai-review-mode">
-        <img src="./assets/route-ai-review-mode.png" alt="AI Review Mode Route" width="100%" />
-      </a>
-    </td>
-    <td width="50%">
-      <a href="#route-04--build-roadmap">
-        <img src="./assets/route-build-roadmap.png" alt="Build Roadmap Route" width="100%" />
-      </a>
-    </td>
-  </tr>
-</table>
+<p align="center">
+  <a href="https://ashleybedford.base44.app">Portfolio</a> ·
+  <a href="https://ashleybedford.base44.app/ai-context">AI Context</a> ·
+  <a href="https://www.linkedin.com/in/ashley-bedford-msc">LinkedIn</a>
+</p>
 
 ---
 
-## The Map
+<a href="#route-01--technical-reviewer">
+  <img src="./assets/route-map.png" alt="Choose your route through Ashley Bedford's Operational AI Field Guide" width="100%" />
+</a>
+
+<p align="center">
+  <a href="#route-01--technical-reviewer">Technical Reviewer</a> ·
+  <a href="#route-02--hiring-manager">Hiring Manager</a> ·
+  <a href="#route-03--ai-review-mode">AI Review Mode</a> ·
+  <a href="#route-04--build-roadmap">Build Roadmap</a>
+</p>
+
+---
+
+## The Field Guide
+
+This GitHub profile is designed as a technical field guide, not a resume.
+
+Start with the route that best matches how you want to review my work:
+
+- **Technical Reviewer** — architecture, testing, decision engines, contracts, implementation notes
+- **Hiring Manager** — role fit, business value, adoption, and where I work best
+- **AI Review Mode** — prompts for ChatGPT, Claude, Gemini, and Perplexity
+- **Build Roadmap** — what is implemented, designing, and next
 
 ```mermaid
 flowchart LR
@@ -74,12 +65,14 @@ Every system I build starts with the same question:
 
 # Route 01 · Technical Reviewer
 
+<img src="./assets/architecture-decision-flow.png" alt="System Design — State Layer to Role Views" width="100%" />
+
 If you are reviewing the engineering, start here.
 
 My flagship technical work focuses on decision systems: systems that convert business state into explainable recommendations, scenario outputs, and role-specific actions.
 
 <a href="https://github.com/abedford37/operational-intelligence-os">
-  <img src="./assets/project-operational-intelligence-os.png" alt="Operational Intelligence Operating System" width="100%" />
+  <img src="./assets/operational-intelligence-os.png" alt="Operational Intelligence Operating System" width="100%" />
 </a>
 
 ## Operational Intelligence Operating System
@@ -92,23 +85,21 @@ State Layer → Decision Engines → Recommendation Contract → Enterprise Impa
 
 Current implementation includes:
 
-* Inventory policy logic
-* Stockout risk calculation
-* Greedy transfer optimization
-* PROD/STAGE scenario isolation
-* Recommendation contracts
-* Data-backed enterprise-impact scoring
-* Role-specific dashboard outputs
-* 31 passing tests across schema, engines, views, enterprise logic, and CLI workflows
+- Inventory policy logic
+- Stockout risk calculation
+- Greedy transfer optimization
+- PROD/STAGE scenario isolation
+- Recommendation contracts
+- Data-backed enterprise-impact scoring
+- Role-specific dashboard outputs
+- 31 passing tests across schema, engines, views, enterprise logic, and CLI workflows
 
-<details>
-<summary><strong>Open architecture notes</strong></summary>
+<details open>
+<summary><strong>Field Note 01 · Architecture Walkthrough</strong></summary>
 
 The system is designed around one principle:
 
 > Business state should become explainable recommendations, not static dashboards.
-
-Core architecture:
 
 ```mermaid
 flowchart LR
@@ -118,33 +109,33 @@ flowchart LR
     D --> E[Role Views]
 ```
 
-Key design priorities:
+Core design priorities:
 
-* Deterministic outputs
-* Scenario-safe what-if logic
-* Structured recommendation contracts
-* Explainable decision logic
-* Enterprise-impact-aware recommendations
-* Role-specific outputs for different users
+- Deterministic outputs
+- Scenario-safe what-if logic
+- Structured recommendation contracts
+- Explainable decision logic
+- Enterprise-impact-aware recommendations
+- Role-specific outputs for different users
 
 </details>
 
 <details>
-<summary><strong>Open engineering principles</strong></summary>
+<summary><strong>Field Note 02 · Engineering Principles</strong></summary>
 
-**Deterministic by default**
+**Deterministic by default**  
 The same inputs should produce the same recommendation.
 
-**Explainable before optimized**
+**Explainable before optimized**  
 A recommendation must explain why it was selected.
 
-**Scenario-safe**
+**Scenario-safe**  
 What-if logic should never mutate committed operating state.
 
-**Contract-first**
+**Contract-first**  
 Views should consume structured recommendation objects, not ad hoc strings.
 
-**Baseline before ML**
+**Baseline before ML**  
 A model should earn its place by beating a simple alternative.
 
 </details>
@@ -161,14 +152,14 @@ I am strongest in work where AI, internal operations, and adoption have to meet.
 
 ## Best-fit work
 
-* Operational AI implementation
-* AI solutions consulting
-* AI workflow automation
-* AI technical program management
-* Operational intelligence systems
-* Decision systems design
-* AI adoption and enablement
-* Applied AI/ML for business operations
+- Operational AI implementation
+- AI solutions consulting
+- AI workflow automation
+- AI technical program management
+- Operational intelligence systems
+- Decision systems design
+- AI adoption and enablement
+- Applied AI/ML for business operations
 
 ## How I work
 
@@ -179,10 +170,10 @@ Embed it into how the team works.
 ```
 
 <details>
-<summary><strong>Why this combination matters</strong></summary>
+<summary><strong>Field Note 03 · Why This Combination Matters</strong></summary>
 
-Many people can map a process.
-Some people can build a model.
+Many people can map a process.  
+Some people can build a model.  
 Fewer people can connect the process, model, workflow, stakeholder reality, documentation, and adoption path.
 
 That is where I work best: the messy middle where AI has to become operational infrastructure, not just a prototype.
@@ -190,16 +181,16 @@ That is where I work best: the messy middle where AI has to become operational i
 </details>
 
 <details>
-<summary><strong>What I am not trying to be</strong></summary>
+<summary><strong>Field Note 04 · What I Am Not Trying To Be</strong></summary>
 
 I am not positioning myself as:
 
-* a generic full-stack developer
-* a dashboard-only analyst
-* a pure research scientist
-* a traditional supply chain specialist only
-* a no-code automation generalist only
-* a purely strategic advisor with no technical implementation depth
+- a generic full-stack developer
+- a dashboard-only analyst
+- a pure research scientist
+- a traditional supply chain specialist only
+- a no-code automation generalist only
+- a purely strategic advisor with no technical implementation depth
 
 My differentiator is the full arc:
 
@@ -214,6 +205,8 @@ Map → Build → Embed
 <a id="route-03--ai-review-mode"></a>
 
 # Route 03 · AI Review Mode
+
+<img src="./assets/ai-review-mode.png" alt="AI Review Mode — Use an LLM to inspect the work" width="100%" />
 
 Use these prompts with ChatGPT, Claude, Gemini, or Perplexity to review my work.
 
@@ -243,10 +236,10 @@ Summarize Ashley Bedford’s technical positioning for a hiring manager. Focus o
 
 ## AI-readable context
 
-* Portfolio: https://ashleybedford.base44.app
-* AI Context: https://ashleybedford.base44.app/ai-context
-* GitHub: https://github.com/abedford37
-* LinkedIn: https://www.linkedin.com/in/ashley-bedford-msc
+- Portfolio: https://ashleybedford.base44.app
+- AI Context: https://ashleybedford.base44.app/ai-context
+- GitHub: https://github.com/abedford37
+- LinkedIn: https://www.linkedin.com/in/ashley-bedford-msc
 
 ---
 
@@ -256,22 +249,32 @@ Summarize Ashley Bedford’s technical positioning for a hiring manager. Focus o
 
 This is the current build path behind the Operational Intelligence Operating System.
 
-| Stage | Capability                    | Status      | Why It Matters                                                 |
-| ----- | ----------------------------- | ----------- | -------------------------------------------------------------- |
-| Map   | Inventory intelligence engine | Implemented | Turns inventory state into explainable decisions               |
-| Map   | Scenario isolation            | Implemented | Allows what-if testing without mutating committed state        |
-| Build | Recommendation contract       | Implemented | Makes decision outputs structured and reusable                 |
-| Build | Enterprise-impact scoring     | Implemented | Evaluates recommendations beyond local optimization            |
-| Build | Demand Intelligence Engine    | Designing   | Uses forecasting to refresh inventory strategy                 |
-| Build | Inbound Intelligence Engine   | Designed    | Connects incoming supply to capacity and positioning decisions |
-| Embed | Decision memory / Learn loop  | Designed    | Captures outcomes so the system can improve over time          |
+## Build Path
+
+- [x] Inventory Intelligence Engine
+- [x] Scenario Isolation
+- [x] Recommendation Contract
+- [x] Enterprise-Impact Scoring
+- [ ] Demand Intelligence Engine
+- [ ] Inbound Intelligence Engine
+- [ ] Decision Memory / Learn Loop
+
+<details open>
+<summary><strong>Implemented</strong></summary>
+
+| Capability | Why It Matters |
+|---|---|
+| Inventory Intelligence Engine | Turns inventory state into explainable decisions |
+| Scenario Isolation | Allows what-if testing without mutating committed state |
+| Recommendation Contract | Makes decision outputs structured and reusable |
+| Enterprise-Impact Scoring | Evaluates recommendations beyond local optimization |
+
+</details>
 
 <details>
-<summary><strong>Open next build: Demand Intelligence Engine</strong></summary>
+<summary><strong>Designing Next · Demand Intelligence Engine</strong></summary>
 
 The next technical layer is a forecasting engine that connects demand signals to inventory policy.
-
-Target flow:
 
 ```text
 Demand History → Feature Engineering → Baseline Model → XGBoost Forecast → Policy Refresh → Enterprise Impact
@@ -283,6 +286,21 @@ The goal is to show how forecasting changes decisions, risk, policy, recommendat
 
 </details>
 
+<details>
+<summary><strong>Planned · Decision Memory / Learn Loop</strong></summary>
+
+The decision memory layer is designed to capture outcomes from past recommendations so the system can improve over time.
+
+Planned questions:
+
+- Which recommendations were accepted?
+- Which were overridden?
+- Which constraints changed the decision?
+- Did the outcome improve risk, cost, time, or operational stability?
+- What should the system remember before making the next recommendation?
+
+</details>
+
 ---
 
 # Selected Technical Work
@@ -291,24 +309,24 @@ The goal is to show how forecasting changes decisions, risk, policy, recommendat
   <tr>
     <td width="50%">
       <a href="https://github.com/abedford37/operational-intelligence-os">
-        <img src="./assets/project-operational-intelligence-os.png" alt="Operational Intelligence OS" width="100%" />
+        <img src="./assets/operational-intelligence-os.png" alt="Operational Intelligence OS" width="100%" />
       </a>
     </td>
     <td width="50%">
       <a href="https://github.com/abedford37/demand-intelligence-engine">
-        <img src="./assets/project-demand-intelligence.png" alt="Demand Intelligence Engine" width="100%" />
+        <img src="./assets/demand-intelligence-engine.png" alt="Demand Intelligence Engine" width="100%" />
       </a>
     </td>
   </tr>
   <tr>
     <td width="50%">
       <a href="https://github.com/abedford37/operational-intelligence-os/blob/main/docs/ARCHITECTURE.md">
-        <img src="./assets/project-architecture-stack.png" alt="Architecture and Stack" width="100%" />
+        <img src="./assets/architecture-decision-flow.png" alt="Architecture and Decision Flow" width="100%" />
       </a>
     </td>
     <td width="50%">
       <a href="https://github.com/abedford37/operational-intelligence-os/tree/main/docs">
-        <img src="./assets/project-docs-testing.png" alt="Engineering Notes and Documentation" width="100%" />
+        <img src="./assets/engineering-notes.png" alt="Engineering Notes and Documentation" width="100%" />
       </a>
     </td>
   </tr>
@@ -319,21 +337,21 @@ The goal is to show how forecasting changes decisions, risk, policy, recommendat
 # System Layers
 
 <details>
-<summary><strong>Open technical stack</strong></summary>
+<summary><strong>Open Technical Stack</strong></summary>
 
-| Layer       | Tools                                                   |
-| ----------- | ------------------------------------------------------- |
-| Language    | Python, SQL, JavaScript / TypeScript                    |
-| Data        | SQLAlchemy, PostgreSQL, SQLite, pandas                  |
-| AI/ML       | XGBoost, scikit-learn, forecasting, feature engineering |
-| APIs / Apps | FastAPI, CLI tooling, React                             |
-| Testing     | Unit tests, regression tests, deterministic fixtures    |
-| DevOps      | GitHub Actions, documentation-first workflows           |
+| Layer | Tools |
+|---|---|
+| Language | Python, SQL, JavaScript / TypeScript |
+| Data | SQLAlchemy, PostgreSQL, SQLite, pandas |
+| AI/ML | XGBoost, scikit-learn, forecasting, feature engineering |
+| APIs / Apps | FastAPI, CLI tooling, React |
+| Testing | Unit tests, regression tests, deterministic fixtures |
+| DevOps | GitHub Actions, documentation-first workflows |
 
 </details>
 
 <details>
-<summary><strong>Open proof signals</strong></summary>
+<summary><strong>Open Proof Signals</strong></summary>
 
 ```text
 ✓ Scenario-safe architecture
@@ -351,14 +369,34 @@ The goal is to show how forecasting changes decisions, risk, policy, recommendat
 
 # Connect
 
-* Portfolio: https://ashleybedford.base44.app
-* AI Context: https://ashleybedford.base44.app/ai-context
-* LinkedIn: https://www.linkedin.com/in/ashley-bedford-msc
-* Email: [ashley.bedford681@gmail.com](mailto:ashley.bedford681@gmail.com)
-
+- Portfolio: https://ashleybedford.base44.app
+- AI Context: https://ashleybedford.base44.app/ai-context
+- LinkedIn: https://www.linkedin.com/in/ashley-bedford-msc
+- Email: ashley.bedford681@gmail.com
 ```text
 ashley@operational-ai:~$ map → build → embed
 ```
 
+---
+
+## Asset Checklist
+
+This README expects the following files in your profile repo:
+
+```text
+/assets/github-field-guide-hero.gif
+/assets/route-map.png
+/assets/operational-intelligence-os.png
+/assets/architecture-decision-flow.png
+/assets/ai-review-mode.png
+/assets/demand-intelligence-engine.png
+/assets/engineering-notes.png
 ```
+
+Before publishing, replace:
+
+```text
+YOUR-USERNAME
+YOUR-LINKEDIN-SLUG
+hello@ashleybedford.dev
 ```
