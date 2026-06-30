@@ -376,27 +376,3 @@ Planned questions:
 ```text
 ashley@operational-ai:~$ map → build → embed
 ```
-
----
-
-## Asset Checklist
-
-This README expects the following files in your profile repo:
-
-```text
-/assets/github-field-guide-hero.gif
-/assets/route-map.png
-/assets/operational-intelligence-os.png
-/assets/architecture-decision-flow.png
-/assets/ai-review-mode.png
-/assets/demand-intelligence-engine.png
-/assets/engineering-notes.png
-```
-
-Before publishing, replace:
-
-```text
-YOUR-USERNAME
-YOUR-LINKEDIN-SLUG
-hello@ashleybedford.dev
-```
