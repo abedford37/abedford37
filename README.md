@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./assets/github-field-guide-hero.gif" alt="Ashley Bedford — Operational AI Field Guide" width="100%" />
+<img src="./assets/github-field-guide-hero.gif" alt="Ashley Bedford, Operational AI Field Guide" width="100%" />
 
 </div>
 
@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <kbd>Map</kbd> → <kbd>Build</kbd> → <kbd>Embed</kbd>
+  <kbd>Map</kbd> to <kbd>Build</kbd> to <kbd>Embed</kbd>
 </p>
 
 <p align="center">
@@ -40,10 +40,10 @@ This GitHub profile is designed as a technical field guide, not a resume.
 
 Start with the route that best matches how you want to review my work:
 
-- **Technical Reviewer** — architecture, testing, decision engines, contracts, implementation notes
-- **Hiring Manager** — role fit, business value, adoption, and where I work best
-- **AI Review Mode** — prompts for ChatGPT, Claude, Gemini, and Perplexity
-- **Build Roadmap** — what is implemented, designing, and next
+- **Technical Reviewer**, architecture, testing, decision engines, contracts, and the three-layer system
+- **Hiring Manager**, role fit, business value, adoption, and where I work best
+- **AI Review Mode**, prompts for ChatGPT, Claude, Gemini, and Perplexity
+- **Build Roadmap**, what is implemented, and what is next
 
 ```mermaid
 flowchart LR
@@ -65,11 +65,13 @@ Every system I build starts with the same question:
 
 # Route 01 · Technical Reviewer
 
-<img src="./assets/architecture-decision-flow.png" alt="System Design — State Layer to Role Views" width="100%" />
+<img src="./assets/architecture-decision-flow.png" alt="System Design, product layer to components" width="100%" />
 
 If you are reviewing the engineering, start here.
 
-My flagship technical work focuses on decision systems: systems that convert business state into explainable recommendations, scenario outputs, and role-specific actions.
+My flagship work is one system built in three layers: a product that turns network state
+into explainable recommendations and role views, a decision pipeline that feeds it, and
+five standalone engines beneath that. Each layer stands on its own, with its own tests.
 
 <a href="https://github.com/abedford37/operational-intelligence-os">
   <img src="./assets/operational-intelligence-os.png" alt="Operational Intelligence Operating System" width="100%" />
@@ -77,22 +79,52 @@ My flagship technical work focuses on decision systems: systems that convert bus
 
 ## Operational Intelligence Operating System
 
-A decision layer for multi-site operations that detects positioning risk, simulates what-if scenarios, recommends inventory transfers, and evaluates enterprise impact.
+The product layer, and the flagship. A decision layer for multi-site operations that
+detects positioning risk, simulates what-if scenarios, recommends explainable inventory
+transfers, and evaluates enterprise impact, then puts each recommendation in front of the
+right role. It proves the full arc, from state to a decision a team can act on, on one
+decision family.
 
 ```text
-State Layer → Decision Engines → Recommendation Contract → Enterprise Impact → Role Views
+State Layer -> Decision Engines -> Recommendation Contract -> Enterprise Impact -> Role Views
 ```
 
-Current implementation includes:
+It now consumes the decision pipeline below as its decision core: policy, forecast, and
+home come from the specialized engines, and the product layer does what it is for on top.
 
-- Inventory policy logic
-- Stockout risk calculation
-- Greedy transfer optimization
-- PROD/STAGE scenario isolation
-- Recommendation contracts
-- Data-backed enterprise-impact scoring
-- Role-specific dashboard outputs
-- 31 passing tests across schema, engines, views, enterprise logic, and CLI workflows
+- Positioning risk and stockout calculation
+- Explainable greedy transfer optimization with binding constraints and alternatives
+- PROD/STAGE scenario isolation, enforced structurally
+- Recommendation contract as the source of truth for every view
+- Data-backed enterprise-impact scoring, local versus global
+- Capability model: propose, approve, and commit are separate
+- Consumes the pipeline's decision record and runs its engines on the derived network
+- 36 tests across schema, engines, views, enterprise logic, CLI, and the integration seam
+
+## The system, three layers
+
+The flagship is the top of a three-layer system. The links below are the whole thing.
+
+```mermaid
+flowchart TB
+    P["Product layer<br/>operational-intelligence-os<br/>role views, contract, enterprise impact, scenario isolation"]
+    C["Decision-pipeline core<br/>multi-site-network-decision-system<br/>composes the five engines over one shared catalog"]
+    E1[demand-forecasting-engine]
+    E2[inventory-policy-engine]
+    E3[home-assignment-engine]
+    E4[container-network-engine]
+    E5[transfer-replenishment-engine]
+    P --> C
+    C --> E1
+    C --> E2
+    C --> E3
+    C --> E4
+    C --> E5
+```
+
+- Product: [operational-intelligence-os](https://github.com/abedford37/operational-intelligence-os)
+- Decision-pipeline core: [multi-site-network-decision-system](https://github.com/abedford37/multi-site-network-decision-system)
+- Components: [demand-forecasting-engine](https://github.com/abedford37/demand-forecasting-engine), [inventory-policy-engine](https://github.com/abedford37/inventory-policy-engine), [home-assignment-engine](https://github.com/abedford37/home-assignment-engine), [container-network-engine](https://github.com/abedford37/container-network-engine), [transfer-replenishment-engine](https://github.com/abedford37/transfer-replenishment-engine)
 
 <details open>
 <summary><strong>Field Note 01 · Architecture Walkthrough</strong></summary>
@@ -100,6 +132,10 @@ Current implementation includes:
 The system is designed around one principle:
 
 > Business state should become explainable recommendations, not static dashboards.
+
+Inside the product layer, the flow is one directional and trivially testable: state in,
+pure engines compute a plan, the report layer reshapes it into role views, renderers emit
+HTML. Nothing downstream writes back upstream.
 
 ```mermaid
 flowchart LR
@@ -109,14 +145,9 @@ flowchart LR
     D --> E[Role Views]
 ```
 
-Core design priorities:
-
-- Deterministic outputs
-- Scenario-safe what-if logic
-- Structured recommendation contracts
-- Explainable decision logic
-- Enterprise-impact-aware recommendations
-- Role-specific outputs for different users
+The [system map](https://github.com/abedford37/operational-intelligence-os/blob/main/docs/SYSTEM_MAP.md)
+shows how the product layer, the pipeline, and the engines connect, and where the
+integration seam lives.
 
 </details>
 
@@ -137,6 +168,10 @@ Views should consume structured recommendation objects, not ad hoc strings.
 
 **Baseline before ML**  
 A model should earn its place by beating a simple alternative.
+
+**Compose, do not duplicate**  
+Each decision is one engine with one job; the pipeline composes them; the product
+consumes the result.
 
 </details>
 
@@ -195,7 +230,7 @@ I am not positioning myself as:
 My differentiator is the full arc:
 
 ```text
-Map → Build → Embed
+Map -> Build -> Embed
 ```
 
 </details>
@@ -206,32 +241,32 @@ Map → Build → Embed
 
 # Route 03 · AI Review Mode
 
-<img src="./assets/ai-review-mode.png" alt="AI Review Mode — Use an LLM to inspect the work" width="100%" />
+<img src="./assets/ai-review-mode.png" alt="AI Review Mode, use an LLM to inspect the work" width="100%" />
 
 Use these prompts with ChatGPT, Claude, Gemini, or Perplexity to review my work.
 
 ## Prompt 01 · Technical Evaluation
 
 ```text
-Review Ashley Bedford’s GitHub profile and flagship Operational Intelligence Operating System project. Evaluate her technical strengths across data architecture, applied AI/ML, decision systems, optimization logic, testing discipline, and explainability. Identify what roles or projects she appears best suited for.
+Review Ashley Bedford's GitHub (github.com/abedford37) and her flagship Operational Intelligence Operating System, which sits on top of a five-engine decision pipeline (multi-site-network-decision-system). Evaluate her strengths across data architecture, applied AI/ML, decision systems, optimization logic, testing discipline, explainability, and systems integration. Identify the roles she appears best suited for.
 ```
 
 ## Prompt 02 · Hiring Fit
 
 ```text
-Based on Ashley Bedford’s portfolio and GitHub, assess her fit for roles involving operational AI, AI implementation, workflow automation, AI solutions consulting, AI technical program management, and enterprise AI adoption. Focus on the evidence of her Map → Build → Embed capability.
+Based on Ashley Bedford's portfolio and GitHub, assess her fit for roles in operational AI, AI implementation, workflow automation, AI solutions consulting, AI technical program management, and enterprise AI adoption. Focus on evidence of her Map, Build, Embed capability across the three-layer system: product, pipeline, and engines.
 ```
 
 ## Prompt 03 · Project Deep Dive
 
 ```text
-Analyze the Operational Intelligence Operating System as a portfolio project. Explain what it demonstrates technically and strategically, including scenario isolation, recommendation contracts, enterprise-impact scoring, and decision-system design.
+Analyze the three-layer system on github.com/abedford37: the Operational Intelligence OS as the product layer, the multi-site-network-decision-system as the decision-pipeline core, and the five standalone engines as components. Explain what it demonstrates technically and strategically, including scenario isolation, recommendation contracts, enterprise-impact scoring, and the integration seam where the product consumes the pipeline's decision record.
 ```
 
 ## Prompt 04 · Portfolio Summary
 
 ```text
-Summarize Ashley Bedford’s technical positioning for a hiring manager. Focus on operational AI, decision systems, process discovery, applied AI/ML, workflow automation, and adoption.
+Summarize Ashley Bedford's technical positioning for a hiring manager. Focus on operational AI, decision systems, process discovery, applied AI/ML, workflow automation, systems integration, and adoption.
 ```
 
 ## AI-readable context
@@ -247,47 +282,34 @@ Summarize Ashley Bedford’s technical positioning for a hiring manager. Focus o
 
 # Route 04 · Build Roadmap
 
-This is the current build path behind the Operational Intelligence Operating System.
+Status is tracked honestly. Implemented means it runs in a public repository.
 
 ## Build Path
 
-- [x] Inventory Intelligence Engine
-- [x] Scenario Isolation
-- [x] Recommendation Contract
-- [x] Enterprise-Impact Scoring
-- [ ] Demand Intelligence Engine
-- [ ] Inbound Intelligence Engine
+- [x] Five standalone decision engines (demand, policy, home, container, transfer)
+- [x] Decision pipeline composing the five engines over one shared catalog
+- [x] Operational Intelligence OS product layer, one decision family end to end
+- [x] Integration seam: the product consumes the pipeline's decision record
 - [ ] Decision Memory / Learn Loop
+- [ ] Cross-department coordination engines
+- [ ] MILP transfer solver as a bounded challenger
 
 <details open>
 <summary><strong>Implemented</strong></summary>
 
 | Capability | Why It Matters |
 |---|---|
-| Inventory Intelligence Engine | Turns inventory state into explainable decisions |
-| Scenario Isolation | Allows what-if testing without mutating committed state |
-| Recommendation Contract | Makes decision outputs structured and reusable |
-| Enterprise-Impact Scoring | Evaluates recommendations beyond local optimization |
+| Five standalone engines | Each decision solved once, tested, with cited methods |
+| Decision pipeline (MSDN) | Composes the engines into one network decision per item |
+| Operational Intelligence OS | Turns that decision into risk, transfers, impact, and role views |
+| Integration seam | The product runs its engines on a pipeline-derived network, policy and forecast sourced upstream |
+| Scenario isolation | What-if testing without mutating committed state |
+| Enterprise-impact scoring | Evaluates recommendations beyond local optimization |
 
 </details>
 
 <details>
-<summary><strong>Designing Next · Demand Intelligence Engine</strong></summary>
-
-The next technical layer is a forecasting engine that connects demand signals to inventory policy.
-
-```text
-Demand History → Feature Engineering → Baseline Model → XGBoost Forecast → Policy Refresh → Enterprise Impact
-```
-
-The goal is not to add a standalone ML demo.
-
-The goal is to show how forecasting changes decisions, risk, policy, recommendations, and enterprise impact.
-
-</details>
-
-<details>
-<summary><strong>Planned · Decision Memory / Learn Loop</strong></summary>
+<summary><strong>Designing Next · Decision Memory / Learn Loop</strong></summary>
 
 The decision memory layer is designed to capture outcomes from past recommendations so the system can improve over time.
 
@@ -307,30 +329,31 @@ Planned questions:
 
 <table>
   <tr>
-    <td width="50%">
+    <td width="33%">
       <a href="https://github.com/abedford37/operational-intelligence-os">
         <img src="./assets/operational-intelligence-os.png" alt="Operational Intelligence OS" width="100%" />
       </a>
     </td>
-    <td width="50%">
-      <a href="https://github.com/abedford37/demand-intelligence-engine">
-        <img src="./assets/demand-intelligence-engine.png" alt="Demand Intelligence Engine" width="100%" />
+    <td width="33%">
+      <a href="https://github.com/abedford37/operational-intelligence-os/blob/main/docs/SYSTEM_MAP.md">
+        <img src="./assets/architecture-decision-flow.png" alt="System Map and Architecture" width="100%" />
       </a>
     </td>
-  </tr>
-  <tr>
-    <td width="50%">
-      <a href="https://github.com/abedford37/operational-intelligence-os/blob/main/docs/ARCHITECTURE.md">
-        <img src="./assets/architecture-decision-flow.png" alt="Architecture and Decision Flow" width="100%" />
-      </a>
-    </td>
-    <td width="50%">
+    <td width="33%">
       <a href="https://github.com/abedford37/operational-intelligence-os/tree/main/docs">
         <img src="./assets/engineering-notes.png" alt="Engineering Notes and Documentation" width="100%" />
       </a>
     </td>
   </tr>
 </table>
+
+The decision-pipeline core: [multi-site-network-decision-system](https://github.com/abedford37/multi-site-network-decision-system).
+
+The five component engines: [demand-forecasting-engine](https://github.com/abedford37/demand-forecasting-engine),
+[inventory-policy-engine](https://github.com/abedford37/inventory-policy-engine),
+[home-assignment-engine](https://github.com/abedford37/home-assignment-engine),
+[container-network-engine](https://github.com/abedford37/container-network-engine),
+[transfer-replenishment-engine](https://github.com/abedford37/transfer-replenishment-engine).
 
 ---
 
@@ -341,12 +364,11 @@ Planned questions:
 
 | Layer | Tools |
 |---|---|
-| Language | Python, SQL, JavaScript / TypeScript |
-| Data | SQLAlchemy, PostgreSQL, SQLite, pandas |
-| AI/ML | XGBoost, scikit-learn, forecasting, feature engineering |
-| APIs / Apps | FastAPI, CLI tooling, React |
-| Testing | Unit tests, regression tests, deterministic fixtures |
-| DevOps | GitHub Actions, documentation-first workflows |
+| Language | Python, SQL |
+| Data | SQLAlchemy, SQLite, pandas, numpy |
+| AI/ML | XGBoost, scikit-learn, forecasting, feature engineering, intermittent-demand classification |
+| Optimization | assignment, coverage, and greedy transfer heuristics with binding-constraint reporting |
+| Testing | unit and regression tests, deterministic fixtures, integration tests across the seam |
 
 </details>
 
@@ -354,13 +376,12 @@ Planned questions:
 <summary><strong>Open Proof Signals</strong></summary>
 
 ```text
-✓ Scenario-safe architecture
-✓ Deterministic decision engines
-✓ Recommendation contracts
-✓ Enterprise-impact scoring
-✓ 31 passing tests
-✓ AI-readable website context
-✓ Operational AI positioning across portfolio and GitHub
+Scenario-safe, deterministic decision engines
+Recommendation contract as source of truth
+Enterprise-impact scoring, local versus global
+Five standalone engines composed by one pipeline
+Product layer consuming the pipeline's decision record
+Tests across every layer, product, pipeline, and each engine
 ```
 
 </details>
@@ -373,6 +394,7 @@ Planned questions:
 - AI Context: https://ashleybedford.base44.app/ai-context
 - LinkedIn: https://www.linkedin.com/in/ashley-bedford-msc
 - Email: ashley.bedford681@gmail.com
+
 ```text
-ashley@operational-ai:~$ map → build → embed
+ashley@operational-ai:~$ map -> build -> embed
 ```
